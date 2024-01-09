@@ -15,10 +15,12 @@ def get_demo():
 # Controller-2
 @app.route("/name", methods=['GET','POST'])
 def get_demo_name():
-    data = request.data
-    body = json.loads(data)
-    name = body["name"]
-    return "Hello, I am {}!".format(name)
+    if request.method == 'POST':
+        data = request.get_json()
+        name = data["name"]
+        return jsonify(message="Hello, I am {}!".format(name))
+    else:
+        return jsonify(message="Hello, I am Flask!")
 
 
 # Running the api
