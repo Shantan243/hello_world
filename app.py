@@ -13,7 +13,7 @@ def get_demo():
 
 
 # Controller-2
-@app.route("/name", methods=['POST'])
+@app.route("/name", methods=['GET','POST'])
 def get_demo_name():
     data = request.data
     body = json.loads(data)
